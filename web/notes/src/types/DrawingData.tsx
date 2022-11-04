@@ -1,16 +1,20 @@
 import {Point} from "./Point";
 import {NoteComponentData} from "./NoteComponentData";
+import { v4 as uuidv4 } from 'uuid';
 
 export class DrawingData implements NoteComponentData
 {
     points: Set<Point>
     xPosition: number;
     yPositon: number;
-
+    id: string;
+    complete: boolean;
     constructor(points: Set<Point>) {
         this.points = points;
         this.xPosition = 0;
         this.yPositon = 1;
+        this.id = uuidv4();
+        this.complete = false;
     }
 
     draw(ctx: CanvasRenderingContext2D): any {

@@ -5,12 +5,12 @@ import {Point} from "../../../types/Point";
 export class DrawCursor implements Cursor
 {
     isMouseDown : boolean;
-    drawPoints : Map<string, Point>;
+    drawData : DrawingData;
     captureCallback: (drawing: DrawingData) => any;
 
     constructor(captureCallback: (drawing: DrawingData) => any) {
         this.isMouseDown = false;
-        this.drawPoints = new Map<string, Point>();
+        this.drawData = new DrawingData(new Set<Point>());
         this.captureCallback = captureCallback;
     }
 
@@ -20,7 +20,9 @@ export class DrawCursor implements Cursor
 
     onMouseUp(clientX: number, clientY: number):  void {
         this.isMouseDown = false;
-        this.captureCallback(this.captureDrawing());
+        this.completeDrawing();
+        this.captureCallback(this.drawData);
+        this.clearDrawing();
     }
 
     onMouseMove(clientX: number, clientY: number):  void {
@@ -29,24 +31,19 @@ export class DrawCursor implements Cursor
                 x: clientX,
                 y: clientY
             };
-            const pointHash = this.getPointHash(point);
-            if (!this.drawPoints.has(pointHash)){
-                this.drawPoints.set(pointHash, point);
+            if (!this.drawData.points.has(point)){
+                this.drawData.points.add(point);
             }
+            this.captureCallback(this.drawData);
         }
     }
 
-    captureDrawing(): DrawingData {
-        let points = new Set<Point>();
-        this.drawPoints.forEach((value) => {
-            points.add(value)
-        })
-        this.clearDrawing();
-        return new DrawingData(points);
+    completeDrawing = () => {
+        this.drawData.complete = true;
     }
 
-    clearDrawing(): void {
-        this.drawPoints = new Map<string, Point>();
+    clearDrawing = () => {
+        this.drawData = new DrawingData(new Set<Point>());
     }
 
     private getPointHash(point: Point) : string {
