@@ -1,0 +1,12 @@
+@import "../../settings.css" ;
+
+.notePageContainer {
+    background-color: var(--darkBackground);
+    width: 100%;
+    min-height: 100vh;
+}
+
+.notePageCanvas {
+    position:absolute;
+    height:100%; width:100%;  
+}

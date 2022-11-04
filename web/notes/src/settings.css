@@ -1,0 +1,10 @@
+:root {
+    --primaryColor: #9e379f;
+    --secondaryColor: #c51f5d;
+    --fontDark: #bfb9a3;
+    --fontLight: #d8d5c7;
+    --fontAlt: #c7cad8;
+    --darkBackground: #141d26
+}
+
+@value primaryColor: #0b2744;
