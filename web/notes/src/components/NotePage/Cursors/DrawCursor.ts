@@ -1,16 +1,16 @@
 import {Cursor} from "./Cursor";
-import {DrawingData} from "../../../types/DrawingData";
-import {Point} from "../../../types/Point";
+import {Drawing} from "../NoteComponents/Drawing"
+import {Point} from "../NoteComponents/Point"
 
 export class DrawCursor implements Cursor
 {
     isMouseDown : boolean;
-    drawData : DrawingData;
-    captureCallback: (drawing: DrawingData) => any;
+    drawData : Drawing;
+    captureCallback: (drawing: Drawing) => any;
 
-    constructor(captureCallback: (drawing: DrawingData) => any) {
+    constructor(captureCallback: (drawing: Drawing) => any) {
         this.isMouseDown = false;
-        this.drawData = new DrawingData(new Set<Point>());
+        this.drawData = new Drawing(new Set<Point>());
         this.captureCallback = captureCallback;
     }
 
@@ -43,10 +43,6 @@ export class DrawCursor implements Cursor
     }
 
     clearDrawing = () => {
-        this.drawData = new DrawingData(new Set<Point>());
-    }
-
-    private getPointHash(point: Point) : string {
-        return `${point.x}:${point.y}`
+        this.drawData = new Drawing(new Set<Point>());
     }
 }

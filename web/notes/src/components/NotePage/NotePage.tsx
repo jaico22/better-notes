@@ -1,29 +1,27 @@
-import React, {useEffect, useMemo, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import styles  from './NotePage.module.css'
-import { DrawCursor } from "./Cursors";
-import { Cursor } from "./Cursors/Cursor";
+import {DrawCursor} from "./Cursors";
+import {Cursor} from "./Cursors/Cursor";
 import {InputObserver} from "./InputObserver";
-import {NoteComponentData} from "../../types/NoteComponentData"
-import {DrawingData} from "../../types/DrawingData";
-import { Point } from '../../types/Point';
+import {NoteComponent} from "./NoteComponents/NoteComponent"
 
 const NotePage = () => {
     // todo -- move to redux
-    const init : Map<string, NoteComponentData> = new Map<string, NoteComponentData>();
+    const init : Map<string, NoteComponent> = new Map<string, NoteComponent>();
     const [noteComponents, setNoteComponents] = React.useState(init);
     const [numberOfComponents, setNumberOfComponents] = React.useState(0);
 
-    const callback = (drawing: DrawingData) => {
+    const componentRenderHandler = (noteComponent: NoteComponent) => {
         let newNoteComponets = new Map(noteComponents);
-        newNoteComponets.set(drawing.id, drawing);
+        newNoteComponets.set(noteComponent.id, noteComponent);
         setNoteComponents(newNoteComponets);
-        if (drawing.complete){
+        if (noteComponent.complete){
             setNumberOfComponents(newNoteComponets.size);
         }
     };
 
     useEffect(() => {
-        const cursor: Cursor = new DrawCursor(callback);
+        const cursor: Cursor = new DrawCursor(componentRenderHandler);
         const observer = new InputObserver();
         observer.init();
         observer.setCursor(cursor)

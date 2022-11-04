@@ -1,8 +1,8 @@
 import {Point} from "./Point";
-import {NoteComponentData} from "./NoteComponentData";
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
+import {NoteComponent} from "./NoteComponent";
 
-export class DrawingData implements NoteComponentData
+export class Drawing implements NoteComponent
 {
     points: Set<Point>
     xPosition: number;
