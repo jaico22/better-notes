@@ -6,13 +6,14 @@ export class Drawing implements NoteComponent
 {
     points: Set<Point>
     xPosition: number;
-    yPositon: number;
+    yPosition: number;
     id: string;
     complete: boolean;
+
     constructor(points: Set<Point>) {
         this.points = points;
         this.xPosition = 0;
-        this.yPositon = 1;
+        this.yPosition = 1;
         this.id = uuidv4();
         this.complete = false;
     }

@@ -1,5 +1,5 @@
 import {Cursor} from "./Cursor";
-import {Drawing} from "../NoteComponents/Drawing"
+import {Drawing} from "../NoteComponents"
 import {Point} from "../NoteComponents/Point"
 
 export class DrawCursor implements Cursor
@@ -36,6 +36,9 @@ export class DrawCursor implements Cursor
             }
             this.captureCallback(this.drawData);
         }
+    }
+
+    onKeyDown(event: KeyboardEvent) {
     }
 
     completeDrawing = () => {

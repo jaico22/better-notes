@@ -1,5 +1,7 @@
 import {Drawing} from "./Drawing";
+import {TextBox} from "./TextBox";
 
 export {
-    Drawing,
+    TextBox,
+    Drawing
 }

@@ -31,6 +31,9 @@ class InputObserver
         document.onmousemove = function(event: MouseEvent){
             self.currentCursor?.onMouseMove(event.clientX, event.clientY);
         }
+        document.onkeydown = function(event: KeyboardEvent){
+            self.currentCursor?.onKeyDown(event);
+        }
     }
 }
 
