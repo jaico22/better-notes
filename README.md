@@ -14,7 +14,8 @@
 - [ ] Component Selection / Relocation / Deletion
 - [ ] Images
 - [ ] Rich Text
-- [ ] Local Saving / Encryption (PoC)
+- [ ] Embedded Flow Charting
+- [ ] Local Saving / Encryption (PoC for cloud saving)
 - [ ] Cloud Saving
 - [ ] Public Availability
 
