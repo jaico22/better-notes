@@ -16,6 +16,7 @@
 - [ ] Rich Text
 - [ ] Embedded Flow Charting
 - [ ] Local Saving / Encryption (PoC for cloud saving)
+- [ ] Notebooks / Pages / Sections 
 - [ ] Cloud Saving
 - [ ] Public Availability
 
